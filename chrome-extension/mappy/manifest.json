@@ -5,7 +5,7 @@
   "icons": { "128": "lollybot128.png" },
   "background": { "scripts": ["background.js"] },
   "content_scripts": [
-    { "matches": ["http://*/*"], "js": ["mappy_content_script.js"] }
+    { "matches": ["http://*/*", "file://*"], "js": ["mappy_content_script.js"] }
   ],
   "permissions": [
     "tabs",
@@ -13,10 +13,17 @@
     "https://maps.googleapis.com/*"
   ],
   "page_action": {
-      "default_name": "Display Map",
-      "default_icon": "marker.png",
+      "default_name": "Show controller",
+      "default_icon": "connected.png",
       "default_popup": "popup.html"
   },
+  "web_accessible_resources": [
+    "lollybot/robocademy-control.js",
+    "lollybot/jquery-1.9.1.min.js",
+    "lollybot/jquery.sparkline.min.js",
+    "lollybot/socket.io.js",
+    "lollybot/WebSocketMain.swf"
+  ],
   "manifest_version": 2,
   "content_security_policy": "default-src 'none'; style-src 'self'; script-src 'self'; connect-src https://maps.googleapis.com; img-src https://maps.google.com"
 }
