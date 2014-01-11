@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--  
+
+This is a modidife HTML5/JavaScript interface for Lollybot (formerly known as
+"Suckerbot") based on:
+
+ http://tomtilley.net/projects/suckerbot
+
+-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <title>Robocademy controller</title>
+
+    <link rel="stylesheet" type="text/css" href="css/lollybot.css">
+
+    <!-- jQuery make JabvaScript easier to use -->
+    <script type="text/javascript" src="scripts/jquery-1.9.1.min.js"></script>
+
+    <!-- The analog joystick graphs are Sparklines -->
+    <script type="text/javascript" src="scripts/jquery.sparkline.min.js"></script>
+
+    <!-- Socket.IO provides the communication between this client & the server -->
+    <script type="text/javascript" src="scripts/socket.io.js"></script>
+
+    <!-- This script implements the robot telemetry & control -->
+    <script type="text/javascript" src="scripts/robocademy-control.js"></script>
+
+  </head>
+
+  <body>
+  
+  	<!-- Logo and connection status -->
+	<div id="connection">Connection state unknown</div>
+  
+	<noscript>
+		<p style="color: red">
+			<b>Reely? No JavaScript? Bad luck.</b>
+		</p>
+	</noscript>
+	
+	<div>
+		<ul>
+			<li>b0: <span id="b0"></span></li>
+			<li>b1: <span id="b1"></span></li>
+			<li>b2: <span id="b2"></span></li>
+			<li>b3: <span id="b3"></span></li>
+			<li>b4: <span id="b4"></span></li>
+			<li>b5: <span id="b5"></span></li>
+			<li>b6: <span id="b6"></span></li>
+			<li>b7: <span id="b7"></span></li>
+			<li>b8: <span id="b8"></span></li>
+			<li>b9: <span id="b9"></span></li>
+			<li>b10: <span id="b10"></span></li>
+			<li>b11: <span id="b11"></span></li>
+			<li>b12: <span id="b12"></span></li>
+			<li>b13: <span id="b13"></span></li>
+			<li>b14: <span id="b14"></span></li>
+			<li>b15: <span id="b15"></span></li>
+			<li>b16: <span id="b16"></span></li>
+			<li>b17 (right): <span id="b17"></span></li>
+			<li>b18 (left): <span id="b18"></span></li>
+		</ul>
+	</div>
+	
+	<div>
+	<button id="left-off">&lt;</button>
+	<button id="up-off">^</button>
+	<button id="right-off">&gt;</button>
+	</div>
+
+</body>
+
+</html>
