@@ -179,8 +179,8 @@ if (V_ID == 0 || P_ID == 0 || isNaN(V_ID) || isNaN(P_ID)) {
     // no USB device specified!
     var devices = HID.devices(); // get list of USB devices
     // DC
-    //console.log("The following USB devices have been detected:");
-    //console.log(devices);
+    console.log("The following USB devices have been detected:");
+    console.log(devices);
     // dc
     var deviceNames = [];
     var joysticks = [];
@@ -191,8 +191,12 @@ if (V_ID == 0 || P_ID == 0 || isNaN(V_ID) || isNaN(P_ID)) {
 	
 	// Check to see if we have appropriate permissions!
 	if (!usbDev.product) {
-		console.error('Cannot access USB device properties!\nIf you are running on a Unix-like system check that you have appropriate permissions (or try \'sudo node lollybot-server.js\'');
-		process.exit(1);	
+		console.error('Cannot access USB device properties for product ID "+usbDev.productId+"!\nIf you are running on a Unix-like system check that you have appropriate permissions (or try \'sudo node lollybot-server.js\'');
+		// DC
+		// Not all USB devices have a "product" property, so continue rather than exiting:
+		//process.exit(1);
+		continue;
+		// dc
 	}
 
 	// Edit the list of USB devices to joysticks only
