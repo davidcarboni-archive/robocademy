@@ -9,6 +9,49 @@ if (window == top) {
   });
 }
 
+// From: 
+// http://stackoverflow.com/questions/9515704/building-a-chrome-extension-inject-code-in-a-page-using-a-content-script
+
+//Jquery
+console.log("Injecting jquery script...");
+var jquery = document.createElement('script');
+jquery.src = chrome.extension.getURL("lollybot/jquery-1.9.1.min.js");
+jquery.onload = function() {
+ this.parentNode.removeChild(this);
+};
+(document.head||document.documentElement).appendChild(jquery);
+console.log("Success.");
+
+//Sparkline
+console.log("Injecting jquery sparkline script...");
+var sparkline = document.createElement('script');
+sparkline.src = chrome.extension.getURL("lollybot/jquery.sparkline.min.js");
+sparkline.onload = function() {
+ this.parentNode.removeChild(this);
+};
+(document.head||document.documentElement).appendChild(sparkline);
+console.log("Success.");
+
+// Socket.io
+console.log("Injecting socket.io script...");
+var socketio = document.createElement('script');
+socketio.src = chrome.extension.getURL("lollybot/socket.io.js");
+socketio.onload = function() {
+    this.parentNode.removeChild(this);
+};
+(document.head||document.documentElement).appendChild(socketio);
+console.log("Success.");
+
+// Lollybot control:
+console.log("Injecting control script...");
+var control = document.createElement('script');
+control.src = chrome.extension.getURL("lollybot/robocademy-control.js");
+control.onload = function() {
+    this.parentNode.removeChild(this);
+};
+(document.head||document.documentElement).appendChild(control);
+console.log("Success.");
+
 // Search the text nodes for a US-style mailing address.
 // Return null if none is found.
 var findAddress = function() {
@@ -17,12 +60,25 @@ var findAddress = function() {
 	
   var found;
   var re = /(\d+\s+[':.,\s\w]*,\s*[A-Za-z]+\s*\d{5}(-\d{4})?)/m;
+  var robo = /\s*#robot\s*/;
   var node = document.body;
   var done = false;
   while (!done) {
     done = true;
     for (var i = 0; i < node.childNodes.length; ++i) {
       var child = node.childNodes[i];
+      
+//      console.log(child.textContent);
+//      if (child.textContent.indexOf("robot") != -1) {
+//    	  console.log("I see robots!");
+//      } else {
+//    	  console.log(child.textContent);
+//      }
+//      if (child.textContent.match(robo)) {
+//    	  console.log("Matched robo");
+//      }
+      console.log(child.nodeName);
+      
       if (child.textContent.match(re)) {
         node = child;
         found = node;
