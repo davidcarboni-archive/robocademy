@@ -12,12 +12,22 @@ if (window == top) {
 // From: 
 // http://stackoverflow.com/questions/9515704/building-a-chrome-extension-inject-code-in-a-page-using-a-content-script
 
+//Testing
+console.log("Injecting testing script...");
+var testing = document.createElement('script');
+testing.src = chrome.extension.getURL("lollybot/testing.js");
+testing.onload = function() {
+this.parentNode.removeChild(this);
+};
+(document.head||document.documentElement).appendChild(testing);
+console.log("Success.");
+
 //Jquery
 console.log("Injecting jquery script...");
 var jquery = document.createElement('script');
 jquery.src = chrome.extension.getURL("lollybot/jquery-1.9.1.min.js");
 jquery.onload = function() {
- this.parentNode.removeChild(this);
+this.parentNode.removeChild(this);
 };
 (document.head||document.documentElement).appendChild(jquery);
 console.log("Success.");
