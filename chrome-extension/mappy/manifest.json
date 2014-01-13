@@ -18,6 +18,7 @@
       "default_popup": "popup.html"
   },
   "web_accessible_resources": [
+    "lollybot/testing.js",
     "lollybot/robocademy-control.js",
     "lollybot/jquery-1.9.1.min.js",
     "lollybot/jquery.sparkline.min.js",
