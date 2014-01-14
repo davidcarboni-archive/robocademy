@@ -15,6 +15,7 @@ var robot = {
 var driven = false;
 function drive() {
 	// console.log("E pur si muove.");
+	
 
 	// Fairly crude way of detecting that the Submit button has been pressed:
 	if ($(".is-loading").length && !driven) {
@@ -26,6 +27,40 @@ function drive() {
 }
 
 setInterval(drive, 1000);
+
+
+// First: locate the curren checkpoint:
+var currentCheckpoint;
+for (var project = 0; project < CCDATA.composer.course.projects.length; project++) {
+	for (var checkpoint = 0; checkpoint < CCDATA.composer.course.projects[project].checkpoints.length; checkpoint++) {
+		var current = CCDATA.composer.course.projects[project].checkpoints[checkpoint];
+		console.log(JSON.stringify(current._id) + " : " + JSON.stringify(current.is_current_checkpoint));
+		if (current.is_current_checkpoint) {
+			currentCheckpoint = current;
+		}
+	}
+}
+
+// Second: access local storage and retrieve the content of the file(s):
+if (currentCheckpoint) {
+	var id = currentCheckpoint._id;
+	var value = localStorage.getItem(id);
+	var files = JSON.parse(value);
+	for (var file = 0; file < files.length; file++) {
+		console.log(JSON.stringify(files[file]));
+		for (var property in files[file]) {
+			if (files[file].hasOwnProperty(property)) {
+				console.log(property + " = " + files[file][property]);
+				if (property == "content") {
+					// WOO HOOOOOOOOOOO!!
+					eval(files[file][property]);
+				}
+			}
+		}
+	}
+}
+
+
 
 var
 elCourse = {
