@@ -1,30 +1,20 @@
-Robocademy
+Robocademy Scheme of Work
 ----------
 
-### What is it?
-This is an adaptation of the Lollybot control software for an experimental mashup with Codecademy.
+### Starter (25% of lesson)
 
-The Lollybot code is based on:
+ - Students gather around the progress board.
+ - Discuss the problems in the stuck session and pair up stuck groups with volunteer expert groups.
+  
+### Main (25% of lesson)
 
-> Lollybot HTML5 + JavaScript Telemetry & Control 
-> Version 0.2.0
-> May 31, 2013
-> 
-> This is the software for Lollybot (formerly known as "Suckerbot") my
-> entry in the African Robotics Network (AFRON) $10 Robot Design
-> Challenge:
-> 
-> http://www.robotics-africa.org/afron-design-challenges/10-dollar-robot-design-challenge.html
-> 
-> Suckerbot was a submission in the tethered robot category.  The robot
-> is connected to a computer via a USB cable where both the computing
-> and the programming take place.  You can find more details online at: 
-> 
-> http://www.tomtilley.net/projects/suckerbot/ 
-> 
-> This software is Open Source and the code is released under the GNU
-> Public License. You can download the software which includes the source at:
-> 
-> https://code.google.com/p/lollybot/
+ - Students work in matched ability pairs to independently work through the roboacademy website.
+ - Teacher circulates the space to assist with difficulties and periodically to challenge students to explain the details of what they are working on
+ - Expert groups move around to assist stuck groups
 
-David
+### Plenary (25% of lesson)
+
+ - Students gather again around the progress board.
+ - Teacher calls upon particular groups to demonstrate the progress they have made this lesson principally by asking the questions: “what can you get the robot to do now that it couldn’t do before”
+ - Students visually show their progress through the course by moving their group name along the chart.
+ - Students add notes to their shared learning and stuck log.
