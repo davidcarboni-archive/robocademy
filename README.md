@@ -3,7 +3,7 @@ Robocademy
 
 ### What is it?
 
-This is an adaptation of the Lollybot control software to integrate with Codecademy. 
+This is a set of curriculum materials for Codecademy and an adaptation of the Lollybot control software to integrate the robot with Codecademy. 
 It works using a Chrome extension to add the Lollybot control code to Codecademy pages and runs
 the code typed in to Codecademy locally to control the robot.
 
