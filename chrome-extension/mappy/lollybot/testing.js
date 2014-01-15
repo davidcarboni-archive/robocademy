@@ -28,38 +28,57 @@ function drive() {
 
 setInterval(drive, 1000);
 
-
-// First: locate the curren checkpoint:
-var currentCheckpoint;
-for (var project = 0; project < CCDATA.composer.course.projects.length; project++) {
-	for (var checkpoint = 0; checkpoint < CCDATA.composer.course.projects[project].checkpoints.length; checkpoint++) {
-		var current = CCDATA.composer.course.projects[project].checkpoints[checkpoint];
-		console.log(JSON.stringify(current._id) + " : " + JSON.stringify(current.is_current_checkpoint));
-		if (current.is_current_checkpoint) {
-			currentCheckpoint = current;
-		}
-	}
-}
-
-// Second: access local storage and retrieve the content of the file(s):
-if (currentCheckpoint) {
-	var id = currentCheckpoint._id;
-	var value = localStorage.getItem(id);
-	var files = JSON.parse(value);
-	for (var file = 0; file < files.length; file++) {
-		console.log(JSON.stringify(files[file]));
-		for (var property in files[file]) {
-			if (files[file].hasOwnProperty(property)) {
-				console.log(property + " = " + files[file][property]);
-				if (property == "content") {
-					// WOO HOOOOOOOOOOO!!
-					eval(files[file][property]);
+function getCheckpoint() {
+	if (CCDATA) {
+		// Looks like we're on a course page:
+		for (var project = 0; project < CCDATA.composer.course.projects.length; project++) {
+			for (var checkpoint = 0; checkpoint < CCDATA.composer.course.projects[project].checkpoints.length; checkpoint++) {
+				var current = CCDATA.composer.course.projects[project].checkpoints[checkpoint];
+				console.log(JSON.stringify(current._id) + " : " + JSON.stringify(current.is_current_checkpoint));
+				if (current.is_current_checkpoint) {
+					return current;
 				}
 			}
 		}
 	}
 }
 
+function getCode(checkpoint) {
+	var result = "";
+	
+	// Get the checkpoint data from local storage:
+	var id = checkpoint._id;
+	var value = localStorage.getItem(id);
+	var files = JSON.parse(value);
+	
+	// Now get the code from the files in the current checkpoint:
+	for (var file = 0; file < files.length; file++) {
+		console.log(JSON.stringify(files[file]));
+		for (var property in files[file]) {
+			if (files[file].hasOwnProperty(property)) {
+				console.log(property + " = " + files[file][property]);
+				if (property == "content") {
+					result += files[file][property] + "\n";
+				}
+			}
+		}
+	}
+}
+
+
+//First: locate the current checkpoint:
+var checkpoint = getCheckpoint();
+
+if (checkpoint) {
+	//Second: access local storage and retrieve the content of the file(s):
+	var code = getCode(checkpoint)
+	
+	// Finally, run the code in the browser context:
+	if (code) {
+		//WOO HOOOOOOOOOOO!!
+		eval(code);
+	}
+}
 
 
 var
