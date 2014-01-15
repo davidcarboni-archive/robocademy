@@ -38,7 +38,7 @@ console.log("Loading control...");
 // - implemet the line following code
 //
 
-var start;
+var drive;
 var stop;
 
 $(function() {
@@ -325,7 +325,7 @@ $(function() {
 
 
     // Drive by turning the motors on
-    function drive(leftPower, rightPower) { 
+    function on(leftPower, rightPower) { 
         if (mode == "Driving") {
 	    leftMotorPower  = leftPower;
 	    rightMotorPower = rightPower;
@@ -335,14 +335,14 @@ $(function() {
 
     
     // Stop the motors and restore the "off" arrow image!
-    function stopDriving() { 
+    function off() { 
         if (mode == "Driving") {
 	    stopMotors();
         }
     }
     
-    start = drive;
-    stop = stopDriving;
+    drive = on;
+    stop = off;
 
     
     // Transmit power to motors and update the images
