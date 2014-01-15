@@ -20,7 +20,7 @@ Head over to the [wiki](wiki) for more information.
  
 ### Credits
 
-Robocademy was invented by Clare Wilcockson and coding was done by David Carboni. 
+Robocademy was invented by Clare Wilcockson and hacking is by David Carboni. 
 Clare designed and created the course materials and David hacked the Codecademy site and Lollybot code to make them work together.
 
 The Robocademy extension is based on the Mappy example Chrome extension developed at Google.
