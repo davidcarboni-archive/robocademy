@@ -9,13 +9,19 @@
 	<ul>
 		<li>#robot</li>
 	</ul>
-	<button onClick="test()">Hi</button>
+	<button id="button" onClick="test()">Hi</button>
 	
 	<script type="text/javascript">
 	function test() {
 		console.log(robot.left);
 		alert(robot.right);
 	}
+	
+	setTimeout(function() {
+		console.log("about to replace...");
+		$("#button").click(function( ){ console.log("and1");});
+		console.log("done.");
+	} ,1000)
 	</script>
 </body>
 </html>
