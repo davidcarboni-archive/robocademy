@@ -45,8 +45,8 @@
 var program = require('commander');  // plug-in for command line options
 
 // Uncomment the appropriate line below depending upon your platform:
-var HID = require('./windows/HID');  // plug-in for USB communication on WinXP/7
-//var HID = require('node-hid');  // plug-in for USB communication on Linux/Mac
+//var HID = require('./windows/HID');  // plug-in for USB communication on WinXP/7
+var HID = require('node-hid');  // plug-in for USB communication on Linux/Mac
  
 var REPL = require('repl');          // Needed by node-hid
 var repl = REPL.start({ignoreUndefined: true}); // REPL.start('node-hid> ');
