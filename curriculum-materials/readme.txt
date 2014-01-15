@@ -1,0 +1,1 @@
+This folder contains the source text for the Codecademy exercises.
