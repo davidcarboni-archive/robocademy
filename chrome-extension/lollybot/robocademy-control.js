@@ -25,6 +25,8 @@
  *
  */
 
+console.log("Loading control...");
+
 //
 // To Do:
 // ------
@@ -35,6 +37,9 @@
 //
 // - implemet the line following code
 //
+
+var start;
+var stop;
 
 $(function() {
 	
@@ -319,51 +324,6 @@ $(function() {
     });
 
 
-// Don't bind events as we're not using the controller HTML page:
-//    // Mouse click handling for driving mode
-//    $("#up-off").mousedown(function() {
-//	drive(255, 255);
-//    }).mouseup(function() {
-//	stopDriving();
-//    });
-//    
-//    $("#left-off").mousedown(function() {
-//	drive(255, 0);
-//    }).mouseup(function() {
-//	stopDriving();
-//    });
-//    
-//    $("#right-off").mousedown(function() {
-//	drive(0, 255);
-//    }).mouseup(function() {
-//	stopDriving();
-//    });
-//
-//    
-//    // Key handling for driving 
-//    // (should have a flag for "in driving" mode) 
-//    $(document).keydown(function(evt) {
-//	if (keyAlreadyDown[evt.which] == null) {
-//	    if (evt.which == 87) { // 'W'
-//		drive(255, 255);
-//	    } else if (evt.which == 65) { // 'A'  
-//		drive(255, 0);
-//	    } else if (evt.which == 68) { // 'D' or
-//		drive(0, 255);
-//	    }
-//	    keyAlreadyDown[evt.which] = true;
-//	}
-//    }).keyup(function(evt) {
-//	keyAlreadyDown[evt.which] = null;
-//	if (evt.which == 87){ 
-//	    stopDriving();
-//	} else if (evt.which == 65) { 
-//	    stopDriving();
-//	} else if (evt.which == 68) {
-//	    stopDriving();
-//	}
-//    });
-
     // Drive by turning the motors on
     function drive(leftPower, rightPower) { 
         if (mode == "Driving") {
@@ -380,6 +340,9 @@ $(function() {
 	    stopMotors();
         }
     }
+    
+    start = drive;
+    stop = stopDriving;
 
     
     // Transmit power to motors and update the images
@@ -471,10 +434,10 @@ $(function() {
 	    }
 	    
 	    // Attach the Sparklines to the corresponding <SPAN> HTML elements
-	    $('#left-x').sparkline(leftXpoints, redGraphSettings);            
-	    $('#left-y').sparkline(leftYpoints, blueGraphSettings);
-	    $('#right-x').sparkline(rightXpoints, redGraphSettings);            
-	    $('#right-y').sparkline(rightYpoints, blueGraphSettings);
+//	    $('#left-x').sparkline(leftXpoints, redGraphSettings);            
+//	    $('#left-y').sparkline(leftYpoints, blueGraphSettings);
+//	    $('#right-x').sparkline(rightXpoints, redGraphSettings);            
+//	    $('#right-y').sparkline(rightYpoints, blueGraphSettings);
 	    
 	    setTimeout(graphDraw, refreshinterval);
 	}
@@ -846,3 +809,5 @@ $(function() {
 
 });
 
+
+console.log("Loading control finished.");
