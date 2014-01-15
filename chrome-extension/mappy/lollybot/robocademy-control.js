@@ -319,85 +319,65 @@ $(function() {
     });
 
 
-    // Mouse click handling for driving mode
-    $("#up-off").mousedown(function() {
-	drive(this, 255, 255);
-    }).mouseup(function() {
-	stopDriving(this);
-    });
-    
-    $("#left-off").mousedown(function() {
-	drive(this, 255, 0);
-    }).mouseup(function() {
-	stopDriving(this);
-    });
-    
-    $("#right-off").mousedown(function() {
-	drive(this, 0, 255);
-    }).mouseup(function() {
-	stopDriving(this);
-    });
+// Don't bind events as we're not using the controller HTML page:
+//    // Mouse click handling for driving mode
+//    $("#up-off").mousedown(function() {
+//	drive(255, 255);
+//    }).mouseup(function() {
+//	stopDriving();
+//    });
+//    
+//    $("#left-off").mousedown(function() {
+//	drive(255, 0);
+//    }).mouseup(function() {
+//	stopDriving();
+//    });
+//    
+//    $("#right-off").mousedown(function() {
+//	drive(0, 255);
+//    }).mouseup(function() {
+//	stopDriving();
+//    });
+//
+//    
+//    // Key handling for driving 
+//    // (should have a flag for "in driving" mode) 
+//    $(document).keydown(function(evt) {
+//	if (keyAlreadyDown[evt.which] == null) {
+//	    if (evt.which == 87) { // 'W'
+//		drive(255, 255);
+//	    } else if (evt.which == 65) { // 'A'  
+//		drive(255, 0);
+//	    } else if (evt.which == 68) { // 'D' or
+//		drive(0, 255);
+//	    }
+//	    keyAlreadyDown[evt.which] = true;
+//	}
+//    }).keyup(function(evt) {
+//	keyAlreadyDown[evt.which] = null;
+//	if (evt.which == 87){ 
+//	    stopDriving();
+//	} else if (evt.which == 65) { 
+//	    stopDriving();
+//	} else if (evt.which == 68) {
+//	    stopDriving();
+//	}
+//    });
 
-    
-    // Key handling for driving 
-    // (should have a flag for "in driving" mode) 
-    $(document).keydown(function(evt) {
-	if (keyAlreadyDown[evt.which] == null) {
-	    if (evt.which == 87) { // 'W'
-		drive("#up-off", 255, 255);
-	    } else if (evt.which == 65) { // 'A'  
-		drive("#left-off", 255, 0);
-	    } else if (evt.which == 68) { // 'D' or
-		drive("#right-off", 0, 255);
-	    }
-	    keyAlreadyDown[evt.which] = true;
-	}
-    }).keyup(function(evt) {
-	keyAlreadyDown[evt.which] = null;
-	if (evt.which == 87){ 
-	    stopDriving("#up-off");
-	} else if (evt.which == 65) { 
-	    stopDriving("#left-off");
-	} else if (evt.which == 68) {
-	    stopDriving("#right-off");
-	}
-    });
-
-
-    // Turn on drive arrow images
-    // This just makes the "off" arrow transparent to show the 
-    // "on" arrow which is underneath
-    function driveArrowDown(image) {              
-	$(image).css("opacity", "0")
-	    .css("filter", "alpha(opacity=0)");
-    }
-
-    
-    // Turn off drive arrow images
-    // This just makes the "off" arrow opaque to hide the 
-    // "on" arrow which is underneath
-    function driveArrowUp(image) {              
-	    $(image).css("opacity", "1.0")
-	    .css("filter", "alpha(opacity=100)");
-    }
-
-    
     // Drive by turning the motors on
-    function drive(arrowImage, leftPower, rightPower) { 
+    function drive(leftPower, rightPower) { 
         if (mode == "Driving") {
 	    leftMotorPower  = leftPower;
 	    rightMotorPower = rightPower;
 	    sendMotorPower();
-	    driveArrowDown(arrowImage);
         }
     }
 
     
     // Stop the motors and restore the "off" arrow image!
-    function stopDriving(arrowImage) { 
+    function stopDriving() { 
         if (mode == "Driving") {
 	    stopMotors();
-	    driveArrowUp(arrowImage);
         }
     }
 
