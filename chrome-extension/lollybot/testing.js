@@ -26,17 +26,20 @@ function getCode(checkpoint) {
 	var files = JSON.parse(value);
 	
 	// Now get the code from the files in the current checkpoint:
-	console.log("Getting code for checkpoint " + id + " : " + value);
-	for (var file = 0; file < files.length; file++) {
-		console.log(JSON.stringify(files[file]));
-		for (var property in files[file]) {
-			if (files[file].hasOwnProperty(property)) {
-				console.log(property + " = " + files[file][property]);
-				if (property == "content") {
-					result += files[file][property] + "\n";
+	if (files) {
+		for (var file = 0; file < files.length; file++) {
+			console.log(JSON.stringify(files[file]));
+			for (var property in files[file]) {
+				if (files[file].hasOwnProperty(property)) {
+					console.log(property + " = " + files[file][property]);
+					if (property == "content") {
+						result += files[file][property] + "\n";
+					}
 				}
 			}
 		}
+	} else {
+		alert("You'll need to edit the code first - it's a feature. You'll probably need to refresh this page as well to get things working again.");
 	}
 	
 	return result;
@@ -56,6 +59,7 @@ function runCode() {
 			//WOU HOUUUUUUUUUUU!!
 			console.log("Evaluating: "+code);
 			eval(code);
+			console.log("Code evaluation completed.");
 		}
 	}
 }
