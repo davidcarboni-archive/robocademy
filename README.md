@@ -16,7 +16,7 @@ There are three folders:
 
 ### How do I get started?
  
-Head over to the [wiki](wiki) for more information.
+Head over to the [wiki](../../wiki) for more information.
  
 ### Credits
 
