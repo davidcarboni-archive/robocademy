@@ -2,12 +2,12 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// The background page is asking us to find an address on the page.
-if (window == top) {
-  chrome.extension.onRequest.addListener(function(req, sender, sendResponse) {
-    sendResponse(findAddress());
-  });
-}
+//// The background page is asking us to find an address on the page.
+//if (window == top) {
+//  chrome.extension.onRequest.addListener(function(req, sender, sendResponse) {
+//    sendResponse(findAddress());
+//  });
+//}
 
 // From: 
 // http://stackoverflow.com/questions/9515704/building-a-chrome-extension-inject-code-in-a-page-using-a-content-script
@@ -66,7 +66,7 @@ console.log("Success.");
 // Return null if none is found.
 var findAddress = function() {
 	
-	console.log("Hello, findAddress.");
+	//console.log("Hello, findAddress.");
 	
   var found;
   var re = /(\d+\s+[':.,\s\w]*,\s*[A-Za-z]+\s*\d{5}(-\d{4})?)/m;
@@ -87,7 +87,7 @@ var findAddress = function() {
 //      if (child.textContent.match(robo)) {
 //    	  console.log("Matched robo");
 //      }
-      console.log(child.nodeName);
+      //console.log(child.nodeName);
       
       if (child.textContent.match(re)) {
         node = child;
