@@ -1,7 +1,7 @@
- - Exercise Title:
+### Exercise Title
 Move the robot
 
- - Educational Text:
+### Educational Text
 Movement in physics means that something is changing its poisiton. In this exercise we're going to learn how to get the robot to move!
 
 Motors make the robot move. When you turn them oin the robot will start to move. Whne y ou trun them off it will stop.
@@ -9,11 +9,11 @@ Motors make the robot move. When you turn them oin the robot will start to move.
 Turn them on using this command: drive(128, 128, 2);
 Turn them off using this command: stop();
 
- - Exercise Instructions:
+### Exercise Instructions
 Write some code that tells the robot to move and then stop. It doesn't matter how far it moves!
 
- - Hint:
+### Hint
 
- - Default Code:
-drive(128, 128, 2);
-stop();
+### Default Code
+    drive(128, 128, 2);
+    stop();

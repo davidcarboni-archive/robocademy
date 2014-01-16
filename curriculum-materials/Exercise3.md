@@ -1,7 +1,7 @@
- - Exercise Title:
+### Exercise Title
 Go the distance!
 
- - Educational Text:
+### Educational Text
 Fantastic, now you know how fast your robot goes, you can make it go any distance you like... as long as you know the equation:
 
 distance = speed/time
@@ -16,15 +16,15 @@ time = distance/speed
 
 OK, so lets see if you can make the robot travel a specific distance!
 
- - Exercise Instructions:
+### Exercise Instructions
 Write some code that will make the robot travel:
 a) 10 cm
 b) 4cm
 c) 200mm
 d) 0.5m
 
- - Hint:
+### Hint
 
- - Default Code:
-drive(64, 64, 1.7);
-// What values do you need for your robot?
+### Default Code
+    drive(64, 64, 1.7);
+    // What values do you need for your robot?

@@ -1,14 +1,14 @@
- - Exercise Title:
+### Exercise Title
 How far? how fast?
 
- - Educational Text:
+### Educational Text
 Wouldn't it be good if we could tell the robot how far to travel? Guess what? We can!
 
 Now you're going to have to combine what you've learnt in coding with some maths skills and do an experiment. 
 
 You can tell the motor how long to stay on for by writing the following code...
 
-You'll need the following equipment:
+You'll need the following equipment
 1) Your robot
 2) a pencil
 3) a ruler
@@ -27,7 +27,7 @@ Follow the following method
 8) Calculate the gradient of the graph - this is the robot's speed
 
 
- - Exercise Instructions:
+### Exercise Instructions
 Write some code that gets the robot to travel forward for:
 
 a) 2 seconds
@@ -37,10 +37,10 @@ d) 8 seconds
 e) 10 seconds
 f) 12 seconds
 
- - Hint:
+### Hint
 
- - Default Code:
-drive(128, 128, 2);
-drive(128, 128, 4);
-drive(128, 128, 6);
-// What goes next?
+### Default Code
+    drive(128, 128, 2);
+    drive(128, 128, 4);
+    drive(128, 128, 6);
+    // What goes next?
