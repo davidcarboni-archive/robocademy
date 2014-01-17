@@ -1,22 +1,34 @@
 /**
- * Simple tests to see how far we can get with Codecademy.
+ * Gets the current checkpoint (exercise?) from the Codecademy page.
+ * If we're not on an exercise page, CCDATA.composer is null.
  */
-
 function getCheckpoint() {
-	if (CCDATA) {
+	if (CCDATA.composer) {
 		// Looks like we're on a course page:
-		for (var project = 0; project < CCDATA.composer.course.projects.length; project++) {
-			for (var checkpoint = 0; checkpoint < CCDATA.composer.course.projects[project].checkpoints.length; checkpoint++) {
-				var current = CCDATA.composer.course.projects[project].checkpoints[checkpoint];
-				console.log(JSON.stringify(current._id) + " : " + JSON.stringify(current.is_current_checkpoint));
-				if (current.is_current_checkpoint) {
-					return current;
+		try {
+			for (var project = 0; project < CCDATA.composer.course.projects.length; project++) {
+				for (var checkpoint = 0; checkpoint < CCDATA.composer.course.projects[project].checkpoints.length; checkpoint++) {
+					var current = CCDATA.composer.course.projects[project].checkpoints[checkpoint];
+					console.log(JSON.stringify(current._id) + " : " + JSON.stringify(current.is_current_checkpoint));
+					if (current.is_current_checkpoint) {
+						return current;
+					}
 				}
 			}
+		} catch (error) {
+			console.log("Error getting current checkpoint: "+error.message);
 		}
 	}
 }
 
+/**
+ * Attempts to get the code from the given checkpoint.
+ * I'm not sure how to extract the code from the actual editor as it seems to be made up of a bunch of layers,
+ * however extracting it from the checkpoint is comparatively easy, providing the user has made any edit.
+ * If no edit has been made, it all seems to stop working.
+ * @param checkpoint The checkpoint to inspect.
+ * @returns {String} the extracted code, if available.
+ */
 function getCode(checkpoint) {
 	var result = "";
 	
@@ -45,6 +57,10 @@ function getCode(checkpoint) {
 	return result;
 }
 
+/**
+ * Attempts to run the code entered into the current checkpoint.
+ * Calls getCheckpoint and getCode.
+ */
 function runCode() {
 	
 	//First: locate the current lesson checkpoint:
@@ -63,5 +79,9 @@ function runCode() {
 		}
 	}
 }
-$(".js-submit-code").click(runCode);
+
+/** Add an additional onClick handler to the submit button. */
+$( document ).ready( function() {
+	$(".js-submit-code").click(runCode);
+});
 
