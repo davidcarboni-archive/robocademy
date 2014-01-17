@@ -32,26 +32,30 @@ function getCheckpoint() {
 function getCode(checkpoint) {
 	var result = "";
 	
-	// Get the checkpoint data from local storage:
-	var id = checkpoint._id;
-	var value = localStorage.getItem(id);
-	var files = JSON.parse(value);
-	
-	// Now get the code from the files in the current checkpoint:
-	if (files) {
-		for (var file = 0; file < files.length; file++) {
-			console.log(JSON.stringify(files[file]));
-			for (var property in files[file]) {
-				if (files[file].hasOwnProperty(property)) {
-					console.log(property + " = " + files[file][property]);
-					if (property == "content") {
-						result += files[file][property] + "\n";
+	try {
+		// Get the checkpoint data from local storage:
+		var id = checkpoint._id;
+		var value = localStorage.getItem(id);
+		var files = JSON.parse(value);
+		
+		// Now get the code from the files in the current checkpoint:
+		if (files) {
+			for (var file = 0; file < files.length; file++) {
+				console.log(JSON.stringify(files[file]));
+				for (var property in files[file]) {
+					if (files[file].hasOwnProperty(property)) {
+						console.log(property + " = " + files[file][property]);
+						if (property == "content") {
+							result += files[file][property] + "\n";
+						}
 					}
 				}
 			}
+		} else {
+			alert("You'll need to edit the code first - it's a feature. You'll probably need to refresh this page as well to get things working again.");
 		}
-	} else {
-		alert("You'll need to edit the code first - it's a feature. You'll probably need to refresh this page as well to get things working again.");
+	} catch (error) {
+		console.log("Error getting code for the current checkpoint: " + error.message);
 	}
 	
 	return result;
