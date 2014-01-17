@@ -1,5 +1,7 @@
 /**
  *
+ *   This code is based on: 
+ *
  *   lollybot-control.js
  *
  *   Copyright 2013 Thomas Tilley.

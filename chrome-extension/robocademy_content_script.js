@@ -23,24 +23,18 @@ this.parentNode.removeChild(this);
 console.log("Success.");
 
 //Jquery
-console.log("Injecting jquery script...");
-var jquery = document.createElement('script');
-jquery.src = chrome.extension.getURL("lollybot/jquery-1.9.1.min.js");
-jquery.onload = function() {
-this.parentNode.removeChild(this);
-};
-(document.head||document.documentElement).appendChild(jquery);
-console.log("Success.");
-
-//Sparkline
-console.log("Injecting jquery sparkline script...");
-var sparkline = document.createElement('script');
-sparkline.src = chrome.extension.getURL("lollybot/jquery.sparkline.min.js");
-sparkline.onload = function() {
- this.parentNode.removeChild(this);
-};
-(document.head||document.documentElement).appendChild(sparkline);
-console.log("Success.");
+try {
+	//console.log("Injecting jquery script...");
+	var jquery = document.createElement('script');
+	jquery.src = chrome.extension.getURL("lollybot/jquery-1.9.1.min.js");
+	jquery.onload = function() {
+	this.parentNode.removeChild(this);
+	};
+	(document.head||document.documentElement).appendChild(jquery);
+	//console.log("Success.");
+} catch (error) {
+	console.log("Error adding JQuery: "+ error.message);
+}
 
 // Socket.io
 console.log("Injecting socket.io script...");

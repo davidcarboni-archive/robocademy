@@ -1,5 +1,7 @@
 /**
  *
+ *   This code is based on: 
+ *   
  *   lollybot-control.js
  *
  *   Copyright 2013 Thomas Tilley.
@@ -26,17 +28,6 @@
  */
 
 console.log("Loading control...");
-
-//
-// To Do:
-// ------
-// Layout bug in Chrome for the sparklines - offset down and to the left.
-// Upping or decreasing the sixe 'CTRL' + '+/-' one size solves this!
-// Perhaps try a slightly more lenient container size for the sparkline.
-// - increased by 5 pixels - need to test this!
-//
-// - implemet the line following code
-//
 
 var drive;
 var stop;
