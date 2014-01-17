@@ -18,7 +18,7 @@
       "default_popup": "popup.html"
   },
   "web_accessible_resources": [
-    "lollybot/testing.js",
+    "lollybot/codecademy-interface.js",
     "lollybot/robocademy-control.js",
     "lollybot/jquery-1.9.1.min.js",
     "lollybot/socket.io.js",

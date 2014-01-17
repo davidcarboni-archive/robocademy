@@ -12,17 +12,7 @@
 // From: 
 // http://stackoverflow.com/questions/9515704/building-a-chrome-extension-inject-code-in-a-page-using-a-content-script
 
-//Testing
-console.log("Injecting testing script...");
-var testing = document.createElement('script');
-testing.src = chrome.extension.getURL("lollybot/testing.js");
-testing.onload = function() {
-this.parentNode.removeChild(this);
-};
-(document.head||document.documentElement).appendChild(testing);
-console.log("Success.");
-
-//Jquery
+// Jquery
 try {
 	//console.log("Injecting jquery script...");
 	var jquery = document.createElement('script');
@@ -37,24 +27,46 @@ try {
 }
 
 // Socket.io
-console.log("Injecting socket.io script...");
-var socketio = document.createElement('script');
-socketio.src = chrome.extension.getURL("lollybot/socket.io.js");
-socketio.onload = function() {
-    this.parentNode.removeChild(this);
-};
-(document.head||document.documentElement).appendChild(socketio);
-console.log("Success.");
+try {
+	//console.log("Injecting socket.io script...");
+	var socketio = document.createElement('script');
+	socketio.src = chrome.extension.getURL("lollybot/socket.io.js");
+	socketio.onload = function() {
+	    this.parentNode.removeChild(this);
+	};
+	(document.head||document.documentElement).appendChild(socketio);
+	//console.log("Success.");
+} catch (error) {
+	console.log("Error adding Socket.io: "+ error.message);
+}
 
-// Lollybot control:
-console.log("Injecting control script...");
-var control = document.createElement('script');
-control.src = chrome.extension.getURL("lollybot/robocademy-control.js");
-control.onload = function() {
-    this.parentNode.removeChild(this);
-};
-(document.head||document.documentElement).appendChild(control);
-console.log("Success.");
+// Lollybot control code:
+try {
+	//console.log("Injecting control script...");
+	var control = document.createElement('script');
+	control.src = chrome.extension.getURL("lollybot/robocademy-control.js");
+	control.onload = function() {
+	    this.parentNode.removeChild(this);
+	};
+	(document.head||document.documentElement).appendChild(control);
+	//console.log("Success.");
+} catch (error) {
+	console.log("Error adding Lollybot control code: "+ error.message);
+}
+
+//Code to interface with Codecademy:
+try {
+	//console.log("Injecting testing script...");
+	var testing = document.createElement('script');
+	testing.src = chrome.extension.getURL("lollybot/codecademy-interface.js");
+	testing.onload = function() {
+	this.parentNode.removeChild(this);
+	};
+	(document.head||document.documentElement).appendChild(testing);
+	//console.log("Success.");
+} catch (error) {
+	console.log("Error adding Codecademy interface code: "+ error.message);
+}
 
 // Search the text nodes for a US-style mailing address.
 // Return null if none is found.
