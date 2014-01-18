@@ -84,7 +84,7 @@ function runCode() {
 				code = code.replace(/function\s*stop\s*\(\s*\)\s*\{\s*\}/, "");
 				console.log("Evaluating:\n"+code);
 				eval(code);
-				console.log("Code evaluation completed.");
+				console.log("Code evaluation completed successfully.");
 			} catch (error) {
 				console.log("Error evaluating code: "+error.message);
 				console.log("Sometimes the functions don't load correctly, so if you see and 'undefined' error, try reloading the page.");
