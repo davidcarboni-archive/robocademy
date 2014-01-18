@@ -77,9 +77,14 @@ function runCode() {
 		// Finally, run the code in the browser context:
 		if (code) {
 			//WOU HOUUUUUUUUUUU!!
-			console.log("Evaluating: "+code);
-			eval(code);
-			console.log("Code evaluation completed.");
+			console.log("Evaluating:\n"+code);
+			try {
+				eval(code);
+				console.log("Code evaluation completed.");
+			} catch (error) {
+				console.log("Error evaluating code: "+error.message);
+				console.log("Sometimes the functions don't load correctly, so if you see and 'undefined' error, try reloading the page.");
+			}
 		}
 	}
 }
