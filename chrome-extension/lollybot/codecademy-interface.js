@@ -78,11 +78,11 @@ function runCode() {
 		if (code) {
 			clearCommands();
 			//WOU HOUUUUUUUUUUU!!
-			console.log("Evaluating:\n"+code);
 			try {
 				// remove placeholders:
-				code = code.replace(/function drive\(\)\{\}/, "");
-				code = code.replace(/function stop\(\)\{\}/, "");
+				code = code.replace(/function\s*drive\s*\(\s*\)\s*\{\s*\}/, "");
+				code = code.replace(/function\s*stop\s*\(\s*\)\s*\{\s*\}/, "");
+				console.log("Evaluating:\n"+code);
 				eval(code);
 				console.log("Code evaluation completed.");
 			} catch (error) {
