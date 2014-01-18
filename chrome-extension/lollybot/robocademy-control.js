@@ -140,6 +140,9 @@ $(function() {
 
     calculateThresholds();
 
+    if (typeof io == 'undefined') {
+    	alert("It would appear that somehow socket.io hasn't loaded. Please refresh this page to try again - it usually works second time.");
+    }
     var socket = io.connect('http://localhost:8075');  // 'BOT' 
 
     var bumped = false; // bump flag
