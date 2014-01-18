@@ -40,20 +40,6 @@ try {
 	console.log("Error adding Socket.io: "+ error.message);
 }
 
-// Lollybot control code:
-try {
-	//console.log("Injecting control script...");
-	var control = document.createElement('script');
-	control.src = chrome.extension.getURL("lollybot/robocademy-control.js");
-	control.onload = function() {
-	    this.parentNode.removeChild(this);
-	};
-	(document.head||document.documentElement).appendChild(control);
-	//console.log("Success.");
-} catch (error) {
-	console.log("Error adding Lollybot control code: "+ error.message);
-}
-
 //Code to interface with Codecademy:
 try {
 	//console.log("Injecting testing script...");
@@ -66,6 +52,20 @@ try {
 	//console.log("Success.");
 } catch (error) {
 	console.log("Error adding Codecademy interface code: "+ error.message);
+}
+
+//Lollybot control code:
+try {
+	//console.log("Injecting control script...");
+	var control = document.createElement('script');
+	control.src = chrome.extension.getURL("lollybot/robocademy-control.js");
+	control.onload = function() {
+	    this.parentNode.removeChild(this);
+	};
+	(document.head||document.documentElement).appendChild(control);
+	//console.log("Success.");
+} catch (error) {
+	console.log("Error adding Lollybot control code: "+ error.message);
 }
 
 // Search the text nodes for a US-style mailing address.
