@@ -80,6 +80,9 @@ function runCode() {
 			//WOU HOUUUUUUUUUUU!!
 			console.log("Evaluating:\n"+code);
 			try {
+				// remove placeholders:
+				code = code.replace(/function drive\(\)\{\}/, "");
+				code = code.replace(/function stop\(\)\{\}/, "");
 				eval(code);
 				console.log("Code evaluation completed.");
 			} catch (error) {
