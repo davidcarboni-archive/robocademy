@@ -29,8 +29,77 @@
 
 console.log("Loading control...");
 
-var drive;
-var stop;
+// Command queue:
+var commands = [];
+
+// Functions that add commands to the queue:
+function drive(left, right, time) {
+	
+	// Limit motor powers:
+	left = limit(left, 10, 255);
+	right = limit(right, 10, 255);
+	
+	// Convert seconds to milliseconds:
+	time = time * 1000;
+	if (time < 0) {
+		time = 0;
+	}
+	
+	commands.push({left: left, right: right, time: time});
+}
+function limit(value, max, scale) {
+
+	if (value < 0) {
+		value = 0;
+	} else if (value > max) {
+		value = max;
+	}
+	return Math.round((value/max) * scale);
+}
+function stop(time) {
+	if (time) {
+		// Convert seconds to milliseconds:
+		time = time * 1000;
+		if (time < 0) {
+			time = 0;
+		}
+	} else {
+		time = 0;
+	}
+	commands.push({left: 0, right: 0, time: time});
+}
+
+// Functions used for running the commands in the queue: 
+function clearCommands() {
+	commands = [];
+}
+function runCommands() {
+	var list = commands;
+	var time = 0;
+	for (i = 0; i < commands.length; i++) {
+		var command = commands[i];
+		
+		// Schedule the current command:
+		console.log("Scheduling command: "+ JSON.stringify(command));
+		runCommand(command, time);
+		
+		// Set the time when the next command will be scheduled:
+		if (command.time) {
+			time+=command.time;
+		}
+	}
+}
+function runCommand(command, time) {
+	setTimeout(function() {
+		console.log("Current command is: "+ JSON.stringify(command));
+		driveCommand(command.left, command.right);
+	}, time);
+}
+
+// These variables will be assigned as
+// references to the go() and stop() methods:
+var driveCommand;
+var stopCommand;
 
 $(function() {
 	
@@ -332,8 +401,8 @@ $(function() {
         }
     }
     
-    drive = on;
-    stop = off;
+    driveCommand = on;
+    stopCommand = off;
 
     
     // Transmit power to motors and update the images

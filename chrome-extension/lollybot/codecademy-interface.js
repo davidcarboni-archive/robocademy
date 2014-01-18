@@ -76,6 +76,7 @@ function runCode() {
 		
 		// Finally, run the code in the browser context:
 		if (code) {
+			clearCommands();
 			//WOU HOUUUUUUUUUUU!!
 			console.log("Evaluating:\n"+code);
 			try {
@@ -85,6 +86,9 @@ function runCode() {
 				console.log("Error evaluating code: "+error.message);
 				console.log("Sometimes the functions don't load correctly, so if you see and 'undefined' error, try reloading the page.");
 			}
+			// Add a stop:
+			stop();
+			runCommands();
 		}
 	}
 }
