@@ -9,6 +9,13 @@ Going backwards
 
 ### Default Code
 
+    // Please don't edit these placeholders:
+    function drive(){}
+    function stop(){}
+    // Thank you
+    
+    
+
 ### Submission Correctness Test
 
     // For the moment, accept any solution.

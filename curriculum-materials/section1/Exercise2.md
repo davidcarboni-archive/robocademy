@@ -40,9 +40,15 @@ f) 12 seconds
 ### Hint
 
 ### Default Code
-    drive(128, 128, 2);
-    drive(128, 128, 4);
-    drive(128, 128, 6);
+
+    // Please don't edit these placeholders:
+    function drive(){}
+    function stop(){}
+    // Thank you
+    
+    drive(5, 5, 2);
+    drive(5, 5, 4);
+    drive(5, 5, 6);
     // What goes next?
 
 ### Submission Correctness Test

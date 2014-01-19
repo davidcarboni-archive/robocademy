@@ -26,7 +26,13 @@ j) 10
 ### Hint
 
 ### Default Code
-    drive(1, 1, 10);
+
+    // Please don't edit these placeholders:
+    function drive(){}
+    function stop(){}
+    // Thank you
+    
+    drive(2, 2, 10);
     // What values do you need for the rest of the motor settings?
 
 ### Submission Correctness Test

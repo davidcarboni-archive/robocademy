@@ -15,8 +15,14 @@ Write some code that tells the robot to move and then stop. It doesn't matter ho
 ### Hint
 
 ### Default Code
-    drive(128, 128, 2);
-    stop();
+
+    // Please don't edit these placeholders:
+    function drive(){}
+    function stop(){}
+    // Thank you
+    
+    drive(5, 5, 2);
+
 
 ### Submission Correctness Test
 

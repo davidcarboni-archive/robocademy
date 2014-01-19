@@ -19,7 +19,13 @@ Get the robot to turn right, stop, and then turn left.
 If you drive one motor faster than the other, the robot will turn. If the left motor goes faster, will the robot turn left or right?
 
 ### Default Code
-    drive(1, 5, 2);
+
+    // Please don't edit these placeholders:
+    function drive(){}
+    function stop(){}
+    // Thank you
+    
+    drive(3, 7, 1);
 
 ### Submission Correctness Test
 

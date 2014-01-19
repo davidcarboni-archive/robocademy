@@ -26,7 +26,13 @@ d) 0.5m
 ### Hint
 
 ### Default Code
-    drive(64, 64, 1.7);
+
+    // Please don't edit these placeholders:
+    function drive(){}
+    function stop(){}
+    // Thank you
+    
+    drive(3, 3, 1.7);
     // What values do you need for your robot?
 
 ### Submission Correctness Test
