@@ -5,7 +5,7 @@
   "icons": { "128": "lollybot128.png" },
   "background": { "scripts": ["background.js"] },
   "content_scripts": [
-    { "matches": ["http://*.codecademy.com/*", "file://*"], "js": ["robocademy_content_script.js"] }
+    { "matches": ["http://*.codecademy.com/courses/*", "file://*"], "js": ["robocademy_content_script.js"] }
   ],
   "permissions": [
     "tabs",
