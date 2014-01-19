@@ -21,3 +21,9 @@ If you drive one motor faster than the other, the robot will turn. If the left m
 ### Default Code
     drive(1, 5, 2);
 
+### Submission Correctness Test
+
+    // For the moment, accept any solution.
+    // This needs to be developed.
+    return true;
+    

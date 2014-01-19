@@ -17,3 +17,9 @@ Write some code that tells the robot to move and then stop. It doesn't matter ho
 ### Default Code
     drive(128, 128, 2);
     stop();
+
+### Submission Correctness Test
+
+    // For the moment, accept any solution.
+    // This needs to be developed.
+    return true;

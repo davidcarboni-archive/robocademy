@@ -28,3 +28,10 @@ d) 0.5m
 ### Default Code
     drive(64, 64, 1.7);
     // What values do you need for your robot?
+
+### Submission Correctness Test
+
+    // For the moment, accept any solution.
+    // This needs to be developed.
+    return true;
+    

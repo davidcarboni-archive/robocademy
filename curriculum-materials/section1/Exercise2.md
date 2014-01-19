@@ -44,3 +44,10 @@ f) 12 seconds
     drive(128, 128, 4);
     drive(128, 128, 6);
     // What goes next?
+
+### Submission Correctness Test
+
+    // For the moment, accept any solution.
+    // This needs to be developed.
+    return true;
+    
