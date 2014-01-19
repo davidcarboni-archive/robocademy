@@ -3,22 +3,16 @@
  * If we're not on an exercise page, CCDATA.composer is null.
  */
 function getCheckpoint() {
-	if (CCDATA.composer) {
-		// Looks like we're on a course page:
-		try {
-			for (var project = 0; project < CCDATA.composer.course.projects.length; project++) {
-				for (var checkpoint = 0; checkpoint < CCDATA.composer.course.projects[project].checkpoints.length; checkpoint++) {
-					var current = CCDATA.composer.course.projects[project].checkpoints[checkpoint];
-					console.log(JSON.stringify(current._id) + " : " + JSON.stringify(current.is_current_checkpoint));
-					if (current.is_current_checkpoint) {
-						return current;
-					}
-				}
-			}
-		} catch (error) {
-			console.log("Error getting current checkpoint: "+error.message);
-		}
-	}
+	
+	// Get the current checkpoint from the URL:
+	var segments =  location.pathname.split("/");
+	var checkpointNumber = segments[segments.length-1];
+	var checkpointIndex = checkpointNumber - 1;
+	
+	// Extract the checkpoint object:
+	var checkpoint = CCDATA.composer.current_project.checkpoints[checkpointIndex];
+	//console.log(checkpoint.latest_files[0].content);
+	return checkpoint;
 }
 
 /**
@@ -36,24 +30,34 @@ function getCode(checkpoint) {
 		// Get the checkpoint data from local storage:
 		var id = checkpoint._id;
 		var value = localStorage.getItem(id);
-		var files = JSON.parse(value);
 		
-		// Now get the code from the files in the current checkpoint:
-		if (files) {
-			for (var file = 0; file < files.length; file++) {
-				console.log(JSON.stringify(files[file]));
-				for (var property in files[file]) {
-					if (files[file].hasOwnProperty(property)) {
-						console.log(property + " = " + files[file][property]);
-						if (property == "content") {
-							result += files[file][property] + "\n";
-						}
+		// Is the latest code in localStorage,
+		// Or should we use latest_files in CCDATA?
+		var files;
+		if (value) {
+			files = JSON.parse(value);
+			console.log("Using files stored in localStorage");
+		} else if (checkpoint.latest_files) {
+			files = checkpoint.latest_files;
+			console.log("Using CCDATA checkpoint latest_files");
+		} else {
+			files = checkpoint.default_files;
+			console.log("Using CCDATA checkpoint default_files");
+		}
+		
+		// Now get the code from the files:
+		for (var file = 0; file < files.length; file++) {
+			//console.log(JSON.stringify(files[file]));
+			for (var property in files[file]) {
+				if (files[file].hasOwnProperty(property)) {
+					//console.log(property + " = " + files[file][property]);
+					if (property == "content") {
+						result += files[file][property] + "\n";
 					}
 				}
 			}
-		} else {
-			alert("You'll need to edit the code first - it's a feature. You'll probably need to refresh this page as well to get things working again.");
 		}
+		
 	} catch (error) {
 		console.log("Error getting code for the current checkpoint: " + error.message);
 	}
@@ -100,4 +104,18 @@ function runCode() {
 $( document ).ready( function() {
 	$(".js-submit-code").click(runCode);
 });
+
+//for(var b in window) { 
+//	if(window.hasOwnProperty(b)) {
+//		if (typeof b != 'undefined' && b != "CCDATA") {
+//			console.log(b); 
+//			try { 
+//				console.log(JSON.stringify(window[b]));
+//			} catch (error) {
+//				console.log("Can't stringify "+b);
+//			}
+//		}
+//	} 
+//}
+
 
